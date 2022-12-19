@@ -3,8 +3,8 @@ function randomIntFromInterval(min, max) { // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-// wait for page to load before fetching data
-window.addEventListener('load', () => {
+function changePoke() {
+    
     let randomNum = randomIntFromInterval(1, 100);
     let endpoint = `https://pokeapi.co/api/v2/pokemon/${randomNum}`;      
     
@@ -18,6 +18,7 @@ window.addEventListener('load', () => {
         const pokeWeight = data.weight
 
         const display = document.getElementById('pokes');
+        display.innerHTML = ''; 
         const newImg = document.createElement('img');
         const newH1 = document.createElement('h1');
         const newP_weight = document.createElement('p');
@@ -34,5 +35,13 @@ window.addEventListener('load', () => {
         display.append(newP_height);
         display.append(newP_weight);
     })
+}
+
+// wait for page to load before fetching data
+window.addEventListener('load', () => {
+    // inital pokemon on load
+    changePoke();
+    // change pokemons over time
+    setInterval(changePoke, 3000)
 })
 

@@ -26,6 +26,8 @@ body {
 
 .pokemonImg {
     width: 40vw;   
+    height: auto;
+    max-height: 50vh;
     margin-bottom: 24px;
 }
 
